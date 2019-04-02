@@ -16,8 +16,10 @@ func openUrl(url string) {
 		browser = "Google Chrome"
 	} else if _, err := os.Stat("/Applications/Firefox.app"); err == nil {
 		browser = "Firefox"
-	} else {
-		log.Fatalf("Error: Chrome or Firefox not found, exiting")
+	} else if _, err := os.Stat("/Applications/Safari.app"); err == nil {
+		browser = "Safari"
+ 	} else {
+		log.Fatalf("Error: Chrome, Firefox or Safari not found, exiting")
 	}
 
 	log.Printf("Found browser: %s", browser)
